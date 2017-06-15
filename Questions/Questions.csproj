@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E886689E-62F5-413F-B4C1-00CC0F5994A7}</ProjectGuid>
+    <ProjectGuid>{F0ECF9FD-57FD-4F71-96D4-28679CF1306F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_01.Balanced</RootNamespace>
-    <AssemblyName>01.Balanced</AssemblyName>
+    <RootNamespace>Questions</RootNamespace>
+    <AssemblyName>Questions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="01.Balanced.cs" />
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
