@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Questions.Theory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,31 @@ namespace Questions
     {
         static void Main(string[] args)
         {
+            MyNode tree = GetTree();
+
+            Console.WriteLine($"Pre-Orden : {tree.GetPreOrder()}");
+            Console.WriteLine($"Pre-Orden : {tree.GetInOrder()}");
+            Console.ReadLine();
+        }
+
+        private static MyNode GetTree()
+        {
+            var tree = new MyNode(2);
+
+            tree.Left = new MyNode(7);
+            //
+            tree.Left.Left = new MyNode(2);
+            tree.Left.Right = new MyNode(6);
+            //
+            tree.Left.Right.Left = new MyNode(5);
+            tree.Left.Right.Right = new MyNode(11);
+
+            tree.Right = new MyNode(5);
+            //
+            tree.Right.Right = new MyNode(9);
+            //
+            tree.Right.Right.Left = new MyNode(4);
+            return tree;
         }
     }
 }

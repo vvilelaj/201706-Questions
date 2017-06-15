@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Questions
+namespace Questions.Questions
 {
     public class _01_Balanced
     {

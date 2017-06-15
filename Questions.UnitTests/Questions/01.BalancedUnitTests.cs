@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Questions.Questions;
 
-namespace Questions.UnitTests
+namespace Questions.Questions.UnitTests
 {
     [TestClass]
     public class _01_BalancedUnitTests
