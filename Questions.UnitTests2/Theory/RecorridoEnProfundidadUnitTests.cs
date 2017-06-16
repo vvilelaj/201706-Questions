@@ -20,7 +20,7 @@ namespace Questions.UnitTests2.Theory
                 var tree = (MyNode)null;
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
 
                 Assert.AreEqual<string>(null, result);
             }
@@ -31,7 +31,7 @@ namespace Questions.UnitTests2.Theory
                 var tree = new MyNode(1);
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
 
                 Assert.AreEqual<string>("1", result);
             }
@@ -43,7 +43,7 @@ namespace Questions.UnitTests2.Theory
                 tree.Left = new MyNode(2);
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
 
                 Assert.AreEqual<string>("1((2) )", result);
             }
@@ -55,7 +55,7 @@ namespace Questions.UnitTests2.Theory
                 tree.Right = new MyNode(3);
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);                
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
                 Assert.AreEqual<string>("1( (3))", result);
             }
 
@@ -67,7 +67,7 @@ namespace Questions.UnitTests2.Theory
                 tree.Right = new MyNode(2);
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
                 Assert.AreEqual<string>("1((3) (2))", result);
             }
 
@@ -91,8 +91,71 @@ namespace Questions.UnitTests2.Theory
                 tree.Right.Right.Left = new MyNode(4);
                 var recorridoEnProfundidad = new RecorridoEnProfundidad();
 
-                var result = recorridoEnProfundidad.GetPreOrden(tree);
+                var result = recorridoEnProfundidad.GetPreOrdenRec(tree);
                 Assert.AreEqual<string>("2((7)((2) (6)((5) (11))) (5)( (9)((4) )))", result);
+            }
+        }
+
+        [TestClass]
+        public class GetPreOrdenIte
+        {
+            [TestMethod]
+            public void GetPreOrdenIte_TreeIsNull_ReturnsNull()
+            {
+                MyNode rootNode = null;
+                var recorridoEnProfundidad = new RecorridoEnProfundidad();
+
+                var result = recorridoEnProfundidad.GetPreOrdenIterativo(rootNode);
+
+                Assert.IsNull(result);
+            }
+
+            [TestMethod]
+            public void GetPreOrdenIte_TreeOnlyHasRoot_ReturnsRootValue()
+            {
+                MyNode rootNode = new MyNode(10);
+                var recorridoEnProfundidad = new RecorridoEnProfundidad();
+
+                var result = recorridoEnProfundidad.GetPreOrdenIterativo(rootNode);
+
+                Assert.AreEqual("10",result);
+            }
+
+            [TestMethod]
+            public void GetPreOrdenIte_TreeOnlyHasLeft_ReturnsRootValue()
+            {
+                MyNode rootNode = new MyNode(10);
+                rootNode.Left = new MyNode(30);
+                var recorridoEnProfundidad = new RecorridoEnProfundidad();
+
+                var result = recorridoEnProfundidad.GetPreOrdenIterativo(rootNode);
+
+                Assert.AreEqual("10(30)", result);
+            }
+
+            [TestMethod]
+            public void GetPreOrdenIte_TreeOnlyHasManyChildren_ReturnsRootValue()
+            {
+                var tree = new MyNode(2);
+                //
+                tree.Left = new MyNode(7);
+                //
+                tree.Left.Left = new MyNode(2);
+                tree.Left.Right = new MyNode(6);
+                //
+                tree.Left.Right.Left = new MyNode(5);
+                tree.Left.Right.Right = new MyNode(11);
+
+                tree.Right = new MyNode(5);
+                //
+                tree.Right.Right = new MyNode(9);
+                //
+                tree.Right.Right.Left = new MyNode(4);
+                var recorridoEnProfundidad = new RecorridoEnProfundidad();
+
+                var result = recorridoEnProfundidad.GetPreOrdenIterativo(tree);
+
+                Assert.AreEqual("2(7)(2)(6)(5)(11)(5)(9)(4)", result);
             }
         }
     }

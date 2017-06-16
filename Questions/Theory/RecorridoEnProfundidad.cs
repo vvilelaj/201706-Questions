@@ -10,7 +10,7 @@ namespace Questions.Theory
     {
         private Stack<MyNode> stack = new Stack<MyNode>();
 
-        public string GetPreOrden(MyNode tree)
+        public string GetPreOrdenRec(MyNode tree)
         {
             if (tree == null)
                 return null;
@@ -20,12 +20,75 @@ namespace Questions.Theory
             return result;
         }
 
-        public string GetInOrden(MyNode tree)
+        public string GetInOrdenRec(MyNode tree)
         {
             if (tree == null)
                 return null;
 
             var result = tree.GetInOrder();
+
+            return result;
+        }
+
+        public string GetPreOrdenIterativo(MyNode tree)
+        {
+            if (tree == null)
+            {
+                return null;
+            }
+
+            stack.Clear();
+            stack.Push(tree);
+
+            var result = string.Empty;
+            while (stack.Count > 0)
+            {
+                var currentNode = stack.Pop();
+
+                result += (currentNode.Parent == null) ?  currentNode.Value.ToString() : $"({currentNode.Value.ToString()})";
+
+                if (currentNode.Right != null)
+                {
+                    stack.Push(currentNode.Right);
+                }
+
+                if (currentNode.Left != null)
+                {
+                    stack.Push(currentNode.Left);
+                }
+            }
+
+            return result;
+        }
+
+        public string GetInOrdenIterativo(MyNode tree)
+        {
+            if (tree == null)
+            {
+                return null;
+            }
+
+            stack.Clear();
+            stack.Push(tree);
+
+            var result = string.Empty;
+            while (stack.Count > 0)
+            {
+                var currentNode = stack.Pop();
+
+
+                if (currentNode.Right != null)
+                {
+                    stack.Push(currentNode.Right);
+                }
+
+                stack.Push(currentNode);
+
+                if (currentNode.Left != null)
+                {
+                    stack.Push(currentNode.Left);
+                }
+            }
 
             return result;
         }
