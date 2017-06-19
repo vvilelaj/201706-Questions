@@ -44,12 +44,14 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questions\02.MeetingTime.cs" />
     <Compile Include="Theory\MyNode.cs" />
     <Compile Include="Theory\RecorridoEnProfundidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Questions\01.Balanced.cs" />
     <None Include="App.config" />
+    <Compile Include="Questions\03.Coins.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

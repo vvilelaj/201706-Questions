@@ -29,8 +29,43 @@ namespace Questions.Questions
 		  [Meeting(0, 1), Meeting(3, 8), Meeting(9, 12)]
 
 		 */
-    public class _02_MeetingTime
+    public class HiCal
     {
+        public List<Meeting> MergeRanges(List<Meeting> meetings)
+        {
+            if (meetings == null)
+                return meetings;
+
+            if (meetings.Count <= 1)
+                return meetings;
+
+            meetings = meetings.OrderBy(m => m.StartTime).ToList();
+            var mergedMeetings = new List<Meeting>();
+
+            var mergedMeeting = (Meeting)null;
+            foreach (var meeting in meetings)
+            {
+                if (mergedMeeting == null)
+                {
+                    mergedMeeting = meeting;
+                    continue;
+                }
+
+                if (meeting.StartTime >= mergedMeeting.StartTime &&
+                    meeting.StartTime <= mergedMeeting.EndTime)
+                {
+                    mergedMeeting.EndTime = meeting.EndTime;
+                }
+                else
+                {
+                    mergedMeetings.Add(mergedMeeting);
+                    mergedMeeting = meeting;
+                }
+            }
+            mergedMeetings.Add(mergedMeeting);
+
+            return mergedMeetings;
+        }
     }
 
     public class Meeting

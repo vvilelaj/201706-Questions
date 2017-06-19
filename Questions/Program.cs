@@ -1,4 +1,5 @@
-﻿using Questions.Theory;
+﻿using Questions.Questions;
+using Questions.Theory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,7 @@ namespace Questions
     {
         static void Main(string[] args)
         {
-            var xx = new List<int>();
-            var count1 = xx.Count();
-            if (!xx.Contains(3))
-            {
-                xx.Add(3);
-            }
-            var count2 = xx.Count();
+            var result = new Change().ChangePossibilitiesTopDown(4,new int[] { 1, 2, 3 });
 
 
             MyNode tree = GetTree();
